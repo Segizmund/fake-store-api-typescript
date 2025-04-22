@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {FormEvent, useState} from 'react';
 
 interface AuthResponse {
     token?: string;
@@ -12,7 +12,7 @@ const Login = () => {
     const [token, setToken] = useState<string | null>(null);
     const [loading, setLoading] = useState<boolean>(false);
 
-    const handleSubmit = async (event: React.FormEvent) => {
+    const handleSubmit = async (event: FormEvent) => {
         event.preventDefault();
         setError(null);
         setLoading(true);
@@ -51,7 +51,7 @@ const Login = () => {
                 }
                 setToken(null);
             }
-        } catch (error: any) {
+        } catch (error: string) {
             setError('Произошла ошибка при отправке запроса.');
             console.error('Ошибка при отправке запроса:', error);
         } finally {
