@@ -16,8 +16,6 @@ const Login = () => {
         event.preventDefault();
         setError(null);
         setLoading(true);
-        console.log(username, password);
-        const credentials = { username: username, password: password };
         try {
             const response = await fetch('https://fakestoreapi.com/auth/login', {
                 method: 'POST',
@@ -43,7 +41,6 @@ const Login = () => {
                     setToken(null);
                 }
             } else {
-                // Обрабатываем ошибку, когда response.ok не true (например, 401)
                 try {
                     const errorText = await response.text();
                     setError(`Ошибка авторизации: ${errorText}`);
