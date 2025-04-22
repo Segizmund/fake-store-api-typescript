@@ -7,7 +7,7 @@ function Header() {
             <div className="container mx-auto items-center justify-between py-3">
                 <nav className={'flex gap-5'}>
                     <NavLink className={'hover:opacity-80 transition duration-300 easy-linear'} to={'/'}>Главная</NavLink>
-                    <NavLink className={'hover:opacity-80 transition duration-300 easy-linear'} to={'/quote'}>Цитаты</NavLink>
+                    <NavLink className={'hover:opacity-80 transition duration-300 easy-linear'} to={'/login'}>Вход</NavLink>
                 </nav>
             </div>
         </header>
