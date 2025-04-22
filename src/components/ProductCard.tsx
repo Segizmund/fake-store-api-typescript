@@ -42,7 +42,7 @@ function ProductCard({
             </div>
             <div popover='modal' id={`description-modal-${id}`}
                  className="modal-image transition-discrete starting:open:opacity-0 m-auto fixed open:backdrop-brightness-50 w-fit xl:max-w-1/2  xl:min-w-1/2 min-h-1/2 border-2 border-[#D65A31] rounded-xl p-6 shadow-md shadow-[#D65A31] bg-[#222831]">
-                <button popovertarget={`description-modal-${id}`} popovertargetaction="hide" className={'font-semibold text-white border border-[#D65A31] bg-[#D65A31] py-1 px-2 rounded-xl absolute right-2 top-2 cursor-pointer transition duration-300 easy-linear hover:bg-white hover:text-[#D65A31]'}>
+                <button popoverTarget={`description-modal-${id}`} popovertargetaction="hide" className={'font-semibold text-white border border-[#D65A31] bg-[#D65A31] py-1 px-2 rounded-xl absolute right-2 top-2 cursor-pointer transition duration-300 easy-linear hover:bg-white hover:text-[#D65A31]'}>
                     X
                 </button>
                 <h2 className={'text-[#D65A31] font-bold mb-3'}>{title}</h2>

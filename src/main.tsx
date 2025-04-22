@@ -3,7 +3,6 @@ import {createRoot} from 'react-dom/client';
 import Layout from './layout/Layout';
 import App from './App.tsx'
 import Login from "./auth/Login.tsx";
-import Register from "./auth/Register.tsx";
 import React from "react";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 
