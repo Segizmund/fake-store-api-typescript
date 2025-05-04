@@ -4,15 +4,16 @@ import Layout from './layout/Layout';
 import App from './App.tsx'
 import Login from "./auth/Login.tsx";
 import React from "react";
+import { useAuth } from './auth/AuthContext';
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import { AuthProvider } from './auth/AuthContext';
 
 const ProtectedRoute = () => {
-    const isAuthenticated = !!sessionStorage.getItem('authToken');
-
-    if (isAuthenticated) {
-        return <Outlet />; // Отображаем дочерний элемент
+    const { isLoggedIn } = useAuth();
+    if (isLoggedIn) {
+        return children;
     } else {
-        return <Navigate to="/login" replace />; // Перенаправляем на страницу логина
+        return <Navigate to="/login" replace />;
     }
 };
 
@@ -44,7 +45,7 @@ const router = createBrowserRouter([
 
 const root = createRoot(document.getElementById('root'));
 root.render(
-    <>
+    <AuthProvider>
         <RouterProvider router={router}/>
-    </>
+    </AuthProvider>
 );

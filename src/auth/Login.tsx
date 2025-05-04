@@ -1,4 +1,6 @@
 import React, {FormEvent, useState} from 'react';
+import {useNavigate} from "react-router-dom";
+import {useAuth} from "./AuthContext.tsx";
 
 interface AuthResponse {
     token?: string;
@@ -11,6 +13,9 @@ const Login = () => {
     const [error, setError] = useState<string | null>(null);
     const [token, setToken] = useState<string | null>(null);
     const [loading, setLoading] = useState<boolean>(false);
+
+    const navigate = useNavigate();
+    const { login } = useAuth();
 
     const handleSubmit = async (event: FormEvent) => {
         event.preventDefault();
@@ -32,10 +37,9 @@ const Login = () => {
                 const data: AuthResponse = await response.json();
                 if (data.token) {
                     setToken(data.token);
-                    sessionStorage.setItem('authToken', data.token);
-                    sessionStorage.setItem('name', username);
-                    sessionStorage.setItem('password', password);
+                    login(data.token, username, password);
                     console.log('Успешная авторизация! Токен:', data.token);
+                    navigate('/');
                 } else {
                     setError(data.message || 'Неожиданный ответ от сервера (нет токена).');
                     setToken(null);
